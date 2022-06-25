@@ -1,0 +1,40 @@
+# %%
+from PIL import Image, ImageFilter, ImageFont, ImageDraw
+from IPython.display import Image as Img
+
+# %%
+# pick the image to edit
+image_to_edit = "images/2.jpg"
+Img(filename='images/2.jpg')
+
+# %%
+# pick the image to edit
+image_to_edit = "images/2.jpg"
+
+#load the image
+img = Image.open(image_to_edit)
+ 
+#using the flip function 
+flip = img.transpose(Image.FLIP_LEFT_RIGHT)
+ 
+#saving the image as a new copy 
+flip.save('images/edits/flip.jpg')
+Img(filename='images/edits/flip.jpg')
+
+
+
+# %%
+#load the image edit 
+
+img = Image.open('images/edits/flip.jpg')
+
+#add a watermark
+font = ImageFont.truetype("/System/Library/Fonts/SFCompact.ttf", 500)
+I1 = ImageDraw.Draw(img)
+I1.text((1800, 3000), "Jake Williams", fill=(42,54,59), font=font)
+img.save('images/edits/flip-watermark.jpg')
+
+Img(filename='images/edits/flip-watermark.jpg')
+
+
+
